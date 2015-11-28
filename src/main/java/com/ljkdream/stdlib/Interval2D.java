@@ -115,6 +115,13 @@ public class Interval2D {
      * Unit tests the <tt>Interval2D</tt> data type.
      */
     public static void main(String[] args) {
+        args = new String [5];
+        args[0] = "0.2";
+        args[1] = "0.5";
+        args[2] = "0.5";
+        args[3] = "0.6";
+        args[4] = "10000";
+
         double xlo = Double.parseDouble(args[0]);
         double xhi = Double.parseDouble(args[1]);
         double ylo = Double.parseDouble(args[2]);

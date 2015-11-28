@@ -1,7 +1,5 @@
 package com.ljkdream.one;
 
-import com.ljkdream.stdlib.StdOut;
-
 /**
  * Test
  * Created by LJK on 2015/11/27.
