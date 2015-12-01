@@ -14,6 +14,12 @@ public class Magre extends AbstractSortExample {
         sort(a, 0, a.length - 1);
     }
 
+    /**
+     * 递归排序
+     * @param a 数组
+     * @param lo 起始点
+     * @param hi 终止点
+     */
     private void sort(Comparable[] a, int lo, int hi) {
         if (lo >= hi) {
             return;
@@ -25,6 +31,13 @@ public class Magre extends AbstractSortExample {
         marge(a, lo, mid, hi);
     }
 
+    /**
+     * 归并结果
+     * @param a 数组
+     * @param lo 起始点
+     * @param mid 中间点
+     * @param hi 终止点
+     */
     private void marge(Comparable[] a, int lo, int mid, int hi) {
 
         for (int k = lo; k <= hi; k++) { //复制一份
