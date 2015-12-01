@@ -17,7 +17,8 @@ public class SortTest {
 
 
 //        AbstractSortExample abstractSortExample = new Selection();
-        AbstractSortExample abstractSortExample = new Insertion();
+//        AbstractSortExample abstractSortExample = new Insertion();
+        AbstractSortExample abstractSortExample = new Shell();
 
         abstractSortExample.show(arrays);
         abstractSortExample.sort(arrays);

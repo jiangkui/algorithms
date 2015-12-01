@@ -24,6 +24,8 @@ public class SortCompare {
         } else if (alg.equals(AlgorithmsEnum.SELECTION)) {
             new Selection().sort(comparables);
 
+        } else if (alg.equals(AlgorithmsEnum.SHELL)) {
+            new Shell().sort(comparables);
         }
 
         return stopwatch.elapsedTime();
@@ -50,16 +52,19 @@ public class SortCompare {
         return total;
     }
 
-    public static void main(String[] args) {
-        int length = 10000;
-        int number = 10;
+    private static void executeAndPrint(AlgorithmsEnum selection, int length, int number) {
+        double useTime = timeRandomInput(selection, length, number);
+        System.out.printf("%s 所用时间为：%.3f 秒 %n", selection, useTime);
+    }
 
-        double t1 = timeRandomInput(AlgorithmsEnum.SELECTION, length, number);
-        double t2 = timeRandomInput(AlgorithmsEnum.INSERTION, length, number);
+    public static void main(String[] args) {
+        int length = 100000;
+        int number = 1;
 
         System.out.printf("对 %s 个大小为 %s 位的数组排序结果：%n", number, length);
 
-        System.out.printf("%s 所用时间为：%.3f %n", AlgorithmsEnum.SELECTION, t1);
-        System.out.printf("%s 所用时间为：%.3f", AlgorithmsEnum.INSERTION, t2);
+        executeAndPrint(AlgorithmsEnum.SELECTION, length, number);
+        executeAndPrint(AlgorithmsEnum.INSERTION, length, number);
+        executeAndPrint(AlgorithmsEnum.SHELL, length, number);
     }
 }
