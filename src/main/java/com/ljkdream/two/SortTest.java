@@ -15,6 +15,7 @@ public class SortTest {
             arrays[i] = String.valueOf(data.charAt(i));
         }
 
+
 //        AbstractSortExample abstractSortExample = new Selection();
         AbstractSortExample abstractSortExample = new Insertion();
 
