@@ -26,6 +26,10 @@ public class SortCompare {
 
         } else if (alg.equals(AlgorithmsEnum.SHELL)) {
             new Shell().sort(comparables);
+        } else if (alg.equals(AlgorithmsEnum.MARGE)) {
+            new Magre().sort(comparables);
+        } else {
+            System.out.printf("没有匹配到 %s 对象%n", alg);
         }
 
         return stopwatch.elapsedTime();
@@ -58,7 +62,7 @@ public class SortCompare {
     }
 
     public static void main(String[] args) {
-        int length = 100000;
+        int length = 30000;
         int number = 1;
 
         System.out.printf("对 %s 个大小为 %s 位的数组排序结果：%n", number, length);
@@ -66,5 +70,6 @@ public class SortCompare {
         executeAndPrint(AlgorithmsEnum.SELECTION, length, number);
         executeAndPrint(AlgorithmsEnum.INSERTION, length, number);
         executeAndPrint(AlgorithmsEnum.SHELL, length, number);
+        executeAndPrint(AlgorithmsEnum.MARGE, length, number);
     }
 }
