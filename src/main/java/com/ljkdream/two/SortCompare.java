@@ -30,6 +30,8 @@ public class SortCompare {
             new Merge().sort(comparables);
         } else if (alg.equals(AlgorithmsEnum.MERGE_BU)) {
             new MergeBU().sort(comparables);
+        } else if (alg.equals(AlgorithmsEnum.QUICK)) {
+            new Quick().sort(comparables);
         } else {
             System.out.printf("没有匹配到 %s 对象%n", alg);
         }
@@ -64,15 +66,16 @@ public class SortCompare {
     }
 
     public static void main(String[] args) {
-        int length = 30000;
+        int length = 10000000;
         int number = 1;
 
         System.out.printf("对 %s 个大小为 %s 位的数组排序结果：%n", number, length);
 
-        executeAndPrint(AlgorithmsEnum.SELECTION, length, number);
-        executeAndPrint(AlgorithmsEnum.INSERTION, length, number);
-        executeAndPrint(AlgorithmsEnum.SHELL, length, number);
-        executeAndPrint(AlgorithmsEnum.MERGE, length, number);
-        executeAndPrint(AlgorithmsEnum.MERGE_BU, length, number);
+//        executeAndPrint(AlgorithmsEnum.SELECTION, length, number);
+//        executeAndPrint(AlgorithmsEnum.INSERTION, length, number);
+//        executeAndPrint(AlgorithmsEnum.SHELL, length, number);
+//        executeAndPrint(AlgorithmsEnum.MERGE, length, number);
+//        executeAndPrint(AlgorithmsEnum.MERGE_BU, length, number);
+        executeAndPrint(AlgorithmsEnum.QUICK, length, number);
     }
 }
