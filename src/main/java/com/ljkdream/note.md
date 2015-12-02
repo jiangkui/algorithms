@@ -340,3 +340,121 @@ sort() 方法的作用其实在于安排多次 merge() 方法调用的正确顺�
 自底向上的归并排序比较适合用链表组织的数据。
 
 `end:2015-12-02 13:24`
+
+### 2.2.4 排序算法的复杂度
+`start:2015-12-02 22:19:00`
+
+## 2.3 快速排序
+快速排序是目前应用最广泛的排序算法。
+
+流行的原因：
+- 实现简单
+- 适用于各种不同的输入数据
+- 在一般应用中比其他排序算法快。
+
+特点：它是原址排序算法。
+
+缺点：非常脆弱，实现时要注意避免低劣的性能。
+
+### 2.3.1 基本算法
+快速排序是一种分治的排序算法。
+
+`思想：` 举个例子，给一堆图书馆的书排序，方案是，先随便挑一本书，比这本书编号小的书，往左扔，大的往右边扔。 然后递归。即可排好序。
+
+
+```java
+public class Quick extends AbstractSortExample{
+    @Override
+    public void sort(Comparable[] a) {
+        StdRandom.shuffle(a); //消除对输入的依赖
+        sort(a, 0, a.length - 1);
+    }
+
+    private void sort(Comparable[] a, int lo, int hi) {
+        if (hi <= lo)  return;
+        int j = partition(a, lo, hi);
+        sort(a, lo, j - 1);
+        sort(a, j + 1, hi);
+    }
+
+    private int partition(Comparable[] a, int lo, int hi) {
+        int i = lo; int j = hi + 1; //左右扫描指针
+        Comparable v = a[lo]; //切分元素
+
+        while (true) {
+            //扫描左右，检查扫描是否结束并交换元素
+            while (less(a[++i], v))  if (i == hi) break;
+            while (less(v, a[--j])) if (j == lo)  break;
+            if (i >= j) break;
+            exch(a, i, j);
+        }
+        exch(a, lo, j);
+        return j;
+    }
+}
+
+```
+
+注意事项：
+- 2.3.1.1 原地切分：如果使用一个辅助数组，可以很容易实现切分，但需要花费开销复制回去，这会大大降低排序的速度
+- 2.3.1.2 别越界：注意数组下标别越界了
+- 2.3.1.3 保持随机：把原数组大乱掉
+- 2.3.1.4 终止循环：
+- 2.3.1.5 处理切分元素值有重复的情况
+- 2.3.1.6 终止递归
+
+### 2.3.2 性能特点
+归并排序和希尔排序一般都比快速排序慢，原因在于他们内部循环中移动数据。
+
+快速排序的最好情况是每次都正好能将数组对半分，这个递归公式的解 $Cn$~$N\lg n$
+
+### 2.3.3 算法改进
+快速排序是由 C.A.R Hoare 在1960 年发明的，之后人们不断提出了各种改进方法。不是所有的方法都可行，但其中有一些，非常有效。
+
+以下改进意见值得参考，但需要通过实验来确定改进效果并为实现先择最佳的参数。一般来说他们能将性能提升 20%~30%
+
+#### 2.3.3.1 切换到插入排序
+和大多数递归排序算法一样，改进快速排序性能的一个简单办法基于以下两点：
+- 对于小数组，快速排序比插入排序慢
+- 因为递归，快速排序的 sort() 方法在小数组中也会调用自己。
+
+#### 2.3.3.2 三取样切分
+
+#### 2.3.3.3 熵最优的排序
+实际应用中经常会出现含有大量重复元素的数组。在有大量重复元素的情况下，快速排序就有很大的改进潜力。将当前实现的线性对数级的性能提高到线性级别。
+
+一个简单的想法就是将数组切分为三部分，分别对应小于、等于喝大于切分元素的数组元素。
+
+```java
+public class Quick3way extends AbstractSortExample {
+    @Override
+    public void sort(Comparable[] a) {
+        StdRandom.shuffle(a); //消除对输入的依赖
+        sort(a, 0, a.length - 1);
+    }
+
+    private void sort(Comparable[] a, int lo, int hi) {
+        if (hi <= lo) return;
+        int lt = lo, i = lo + 1, gt = hi;
+        Comparable v = a[lo];
+        while (i <= gt) {
+            int cmp = a[i].compareTo(v);
+            if (cmp < 0) exch(a, lt++, i++);
+            else if (cmp > 0) exch(a, i, gt--);
+            else i ++;
+        } //现在 a[lo..lt-1] < v = a[lt..gt] < a[gt+1..hi] 成立
+        sort(a, lo, lt - 1);
+        sort(a, gt + 1, hi);
+    }
+}
+```
+
+对于包含大量重复元素的数组，它将排序时间从先行对数级降低到线性级别。
+
+这种对重复元素的适应性使得三向切分的快速排序称为排序库函数的最佳算法选择。
+
+经过精心调优的快速排序在绝大多数计算机上的绝大多数应用中都会比其他基于比较的排序算法更快。
+
+`end:2015-12-02 23:46`
+
+## 2.4 优先队列
