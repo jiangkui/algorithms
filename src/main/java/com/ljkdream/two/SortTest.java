@@ -19,7 +19,8 @@ public class SortTest {
 //        AbstractSortExample abstractSortExample = new Selection();
 //        AbstractSortExample abstractSortExample = new Insertion();
 //        AbstractSortExample abstractSortExample = new Shell();
-        AbstractSortExample abstractSortExample = new Magre();
+//        AbstractSortExample abstractSortExample = new Merge();
+        AbstractSortExample abstractSortExample = new MergeBU();
 
         abstractSortExample.show(arrays);
         abstractSortExample.sort(arrays);

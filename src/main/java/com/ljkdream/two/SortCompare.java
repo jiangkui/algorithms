@@ -26,8 +26,10 @@ public class SortCompare {
 
         } else if (alg.equals(AlgorithmsEnum.SHELL)) {
             new Shell().sort(comparables);
-        } else if (alg.equals(AlgorithmsEnum.MARGE)) {
-            new Magre().sort(comparables);
+        } else if (alg.equals(AlgorithmsEnum.MERGE)) {
+            new Merge().sort(comparables);
+        } else if (alg.equals(AlgorithmsEnum.MERGE_BU)) {
+            new MergeBU().sort(comparables);
         } else {
             System.out.printf("没有匹配到 %s 对象%n", alg);
         }
@@ -58,7 +60,7 @@ public class SortCompare {
 
     private static void executeAndPrint(AlgorithmsEnum selection, int length, int number) {
         double useTime = timeRandomInput(selection, length, number);
-        System.out.printf("%s 所用时间为：%.3f 秒 %n", selection, useTime);
+        System.out.printf("%-20.16s 所用时间为：%.3f 秒 %n", selection, useTime);
     }
 
     public static void main(String[] args) {
@@ -70,6 +72,7 @@ public class SortCompare {
         executeAndPrint(AlgorithmsEnum.SELECTION, length, number);
         executeAndPrint(AlgorithmsEnum.INSERTION, length, number);
         executeAndPrint(AlgorithmsEnum.SHELL, length, number);
-        executeAndPrint(AlgorithmsEnum.MARGE, length, number);
+        executeAndPrint(AlgorithmsEnum.MERGE, length, number);
+        executeAndPrint(AlgorithmsEnum.MERGE_BU, length, number);
     }
 }

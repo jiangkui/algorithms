@@ -1,35 +1,18 @@
 package com.ljkdream.two;
 
 /**
- * 归并排序
- * Created by LJK on 2015-12-01.
+ * 抽象的归并排序类
+ * Created by LJK on 2015-12-02.
  */
-public class Magre extends AbstractSortExample {
+public abstract class AbstractMerge extends AbstractSortExample {
 
-    private Comparable[] aux; //归并所需要的辅助数组
-
-    @Override
-    public void sort(Comparable[] a) {
-        aux = new Comparable[a.length]; //一次性分配空间
-        sort(a, 0, a.length - 1);
-    }
+    protected Comparable[] aux; //子类负责初始化
 
     /**
-     * 递归排序
-     * @param a 数组
-     * @param lo 起始点
-     * @param hi 终止点
+     * 子类实现，初始化辅助数组
+     * @param arrayLength 数组长度
      */
-    private void sort(Comparable[] a, int lo, int hi) {
-        if (lo >= hi) {
-            return;
-        }
-
-        int mid = lo + (hi - lo) / 2;
-        sort(a, lo, mid);
-        sort(a, mid + 1, hi);
-        marge(a, lo, mid, hi);
-    }
+    protected abstract void initAus(int arrayLength);
 
     /**
      * 归并结果
@@ -38,7 +21,7 @@ public class Magre extends AbstractSortExample {
      * @param mid 中间点
      * @param hi 终止点
      */
-    private void marge(Comparable[] a, int lo, int mid, int hi) {
+    protected void merge(Comparable[] a, int lo, int mid, int hi) {
 
         for (int k = lo; k <= hi; k++) { //复制一份
             aux[k] = a[k];
