@@ -551,3 +551,4 @@ public class MaxPQ<Key extends Comparable<Key>> {
 #### 2.4.5.1 堆的构造
 `end:2015-12-03 13:05`
 
+`今天暂停，刚才看完了《三体》在看三体相关的东西。。`
