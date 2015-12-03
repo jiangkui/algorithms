@@ -458,3 +458,74 @@ public class Quick3way extends AbstractSortExample {
 `end:2015-12-02 23:46`
 
 ## 2.4 优先队列
+`start:2015-12-03 08:30`
+优先级队列最重要的两个操作是：
+- 删除最大元素
+- 插入元素
+
+### 2.4.3 堆的定义
+数据结构二叉堆能够很好的实现优先级队列的基本操作。
+
+当一棵二叉树的每个节点都大于等于它的两个子节点时，它被称为有序堆。
+### 2.4.4 堆的算法
+对于一个含有 N 个元素的基于对的优先队列，插入元素操作只需要不超过($\lg N+1$)次比较，删除最大元素的操作不需要超过 $2\lg N$次比较。
+```java
+public class MaxPQ<Key extends Comparable<Key>> {
+    private Key[] pq; //pq[0] 不使用
+    private int N = 0;
+
+    public MaxPQ(int maxN) {
+        pq = (Key[]) new Comparable[maxN + 1];
+    }
+
+    public boolean isEmpty() {
+        return N == 0;
+    }
+
+    public int size() {
+        return N;
+    }
+
+    public void insert(Key v) {
+        pq[++N] = v;
+        swim(N);
+    }
+
+    public Key delMax() {
+        Key max = pq[1]; //从根节点得到最大元素
+        exch(1, N--);    //最大元素和最后一个元素交换，sink 将恢复堆的有序性
+        pq[N + 1] = null; //防止对象游离
+        sink(1); //回复堆的有序性
+        return max;
+    }
+
+    private void sink(int k) {
+        while (2 * k <= N) {
+            int j = 2 * k;
+            if (j < N && less(j, j + 1)) { j++; } //获取子节点中大的
+            if (!less(k, j)) { break; }
+            exch(k, j);
+            k = j;
+        }
+    }
+
+    public void swim(int k) {
+        while (k > 1 && less(k / 2, k)) {
+            exch(k / 2, k);
+            k = k / 2;
+        }
+    }
+
+    private void exch(int i, int j) {
+        Key t = pq[i];
+        pq[i] = pq[j];
+        pq[j] = t;
+    }
+
+    private boolean less(int i, int j) {
+        return pq[i].compareTo(pq[j]) < 0;
+    }
+}
+```
+
+`end:2015-12-03 09:29`
