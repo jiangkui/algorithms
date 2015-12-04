@@ -34,6 +34,8 @@ public class SortCompare {
             new Quick().sort(comparables);
         } else if (alg.equals(AlgorithmsEnum.QUICK3WAY)) {
             new Quick3way().sort(comparables);
+        } else if (alg.equals(AlgorithmsEnum.HEAPSORT)) {
+            new HeapSort().sort(comparables);
         } else {
             System.out.printf("没有匹配到 %s 对象%n", alg);
         }
@@ -80,5 +82,6 @@ public class SortCompare {
 //        executeAndPrint(AlgorithmsEnum.MERGE_BU, length, number);
         executeAndPrint(AlgorithmsEnum.QUICK, length, number);
         executeAndPrint(AlgorithmsEnum.QUICK3WAY, length, number);
+        executeAndPrint(AlgorithmsEnum.HEAPSORT, length, number);
     }
 }
