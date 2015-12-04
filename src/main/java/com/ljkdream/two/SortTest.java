@@ -22,7 +22,8 @@ public class SortTest {
 //        AbstractSortExample abstractSortExample = new Merge();
 //        AbstractSortExample abstractSortExample = new MergeBU();
 //        AbstractSortExample abstractSortExample = new Quick();
-        AbstractSortExample abstractSortExample = new Quick3way();
+//        AbstractSortExample abstractSortExample = new Quick3way();
+        AbstractSortExample abstractSortExample = new HeapSort();
 
         abstractSortExample.show(arrays);
         abstractSortExample.sort(arrays);

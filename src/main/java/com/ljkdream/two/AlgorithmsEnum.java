@@ -7,7 +7,7 @@ package com.ljkdream.two;
 public enum AlgorithmsEnum {
     SELECTION("选择排序"), INSERTION("插入排序"),
     SHELL("希尔排序"), MERGE("归并排序"), MERGE_BU("自底向上归并排序"),
-    QUICK("快速排序"), QUICK3WAY("三向切分的快排");
+    QUICK("快速排序"), QUICK3WAY("三向切分的快排"), HEAPSORT("堆排序");
 
     private String chineseName;
 
