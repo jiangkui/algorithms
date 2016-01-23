@@ -1,6 +1,7 @@
 package com.ljkdream.two;
 
-import com.ljkdream.study.sort.SelectionSort;
+import com.ljkdream.review.sort.InsertionSort;
+import com.ljkdream.review.sort.SelectionSort;
 
 /**
  * 排序测试
@@ -29,7 +30,8 @@ public class SortTest {
 
 
         //2016-01-23 复习排序算法
-        AbstractSortExample abstractSortExample = new SelectionSort();
+//        AbstractSortExample abstractSortExample = new SelectionSort();
+        AbstractSortExample abstractSortExample = new InsertionSort();
 
         abstractSortExample.show(arrays);
         abstractSortExample.sort(arrays);

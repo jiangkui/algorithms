@@ -1,7 +1,6 @@
-package com.ljkdream.study.search;
+package com.ljkdream.review.search;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Random;
 
 /**
