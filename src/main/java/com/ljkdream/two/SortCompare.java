@@ -56,11 +56,13 @@ public class SortCompare {
     public static double timeRandomInput(AlgorithmsEnum alg, int length, int number) {
         double total = 0.0;
         Double[] a = new Double[length];
+//        Integer[] a = new Integer[length];
         Random r = new Random();
         for (int t = 0; t < number; t++) {
             //进行一次测试，生成一个数组并排序
             for (int i = 0; i < length; i++) {
                 a[i] = StdRandom.uniform();
+//                a[i] = r.nextInt(1000);
             }
             total += time(alg, a);
         }
