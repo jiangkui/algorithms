@@ -2,6 +2,8 @@ package com.ljkdream.two;
 
 import com.ljkdream.stdlib.StdRandom;
 
+import java.util.Random;
+
 /**
  * 排序比较
  * Created by LJK on 2015-11-30.
@@ -54,6 +56,7 @@ public class SortCompare {
     public static double timeRandomInput(AlgorithmsEnum alg, int length, int number) {
         double total = 0.0;
         Double[] a = new Double[length];
+        Random r = new Random();
         for (int t = 0; t < number; t++) {
             //进行一次测试，生成一个数组并排序
             for (int i = 0; i < length; i++) {
@@ -70,16 +73,16 @@ public class SortCompare {
     }
 
     public static void main(String[] args) {
-        int length = 100000;
+        int length = 10000000;
         int number = 1;
 
         System.out.printf("对 %s 个大小为 %s 位的数组排序结果：%n", number, length);
 
-        executeAndPrint(AlgorithmsEnum.SELECTION, length, number);
-        executeAndPrint(AlgorithmsEnum.INSERTION, length, number);
-        executeAndPrint(AlgorithmsEnum.SHELL, length, number);
-        executeAndPrint(AlgorithmsEnum.MERGE, length, number);
-        executeAndPrint(AlgorithmsEnum.MERGE_BU, length, number);
+//        executeAndPrint(AlgorithmsEnum.SELECTION, length, number);
+//        executeAndPrint(AlgorithmsEnum.INSERTION, length, number);
+//        executeAndPrint(AlgorithmsEnum.SHELL, length, number);
+//        executeAndPrint(AlgorithmsEnum.MERGE, length, number);
+//        executeAndPrint(AlgorithmsEnum.MERGE_BU, length, number);
         executeAndPrint(AlgorithmsEnum.QUICK, length, number);
         executeAndPrint(AlgorithmsEnum.QUICK3WAY, length, number);
         executeAndPrint(AlgorithmsEnum.HEAPSORT, length, number);

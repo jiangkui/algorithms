@@ -13,9 +13,7 @@ public class QuickSort extends AbstractSortExample {
     }
 
     private void sort(Comparable[] a, int lo, int hi) {
-        if (lo >= hi) {
-            return;
-        }
+        if (lo >= hi) return;
         int j = partition(a, lo, hi);
         sort(a, lo, j - 1);
         sort(a, j + 1, hi);
@@ -28,20 +26,14 @@ public class QuickSort extends AbstractSortExample {
 
         while (true) {
             while (less(a[++left], v)) { //从左边开始找到比 v 大的值
-                if (left == hi) {
-                    break;
-                }
+                if (left == hi) break;
             }
 
             while (less(v, a[--right])) { //从右边开始找到比 v 小的值
-                if (right == lo) {
-                    break;
-                }
+                if (right == lo) break;
             }
 
-            if (left >= right) {
-                break;
-            }
+            if (left >= right) break;
 
             exch(a, left, right); //交换两个找到的值（一个比v大的，一个比v小的）
         }

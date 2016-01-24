@@ -27,12 +27,12 @@ public class Quick extends AbstractSortExample {
 
         while (true) {
             //扫描左右，检查扫描是否结束并交换元素
-            while (less(a[++i], v)) if (i == hi) break;
-            while (less(v, a[--j])) if (j == lo) break;
+            while (less(a[++i], v)) if (i == hi) break; //从左边开始找到比 v 大的值
+            while (less(v, a[--j])) if (j == lo) break; //从右边开始找到比 v 小的值
             if (i >= j) break;
             exch(a, i, j);
         }
-        exch(a, lo, j);
-        return j;
+        exch(a, lo, j); //把v放到正确位置
+        return j;//v的正确位置，这个位置是已经排好序的
     }
 }
