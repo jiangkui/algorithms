@@ -22,6 +22,7 @@ public class SortTest {
 //        AbstractSortExample abstractSortExample = new InsertionSort();
         AbstractSortExample abstractSortExample = new QuickSort();
 
+
         abstractSortExample.show(arrays);
         abstractSortExample.sort(arrays);
         abstractSortExample.show(arrays);
